@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 import keyboard
 import tkinter as tk
@@ -23,9 +25,9 @@ def onPress(key):
         currentKeybind = key
     if currentKeybind == key and onFlag == True and not countingDownFlag:
         if endOfLazenithFlag:
-            pygame.mixer.music.load("24s.mp3")
+            pygame.mixer.music.load("./24s.mp3")
         else:
-            pygame.mixer.music.load("32s.mp3")
+            pygame.mixer.music.load("./32s.mp3")
         pygame.mixer.music.play()
         currentCount = 0
         updateCountdown()
@@ -101,13 +103,8 @@ timeLeftLabel.pack(pady=5)
 timeLeftLabel.config(bg="#36393F", fg="#FFFFFF", font=("Myriad", 13, "bold"))
 
 timeLeft = tk.Label(root, text=24)
-timeLeft.pack()
-timeLeft.config(bg="#36393F", fg="#FFFFFF", font=("Myriad", 60, "bold"))
-
-canvas = tk.Canvas(root, width=256, height=256)
-canvas.pack(padx=50, pady=20)
-img = tk.PhotoImage(file="lazenithbg.png")
-canvas.create_image(0, 0, anchor=tk.NW, image=img)
+timeLeft.pack(padx=100)
+timeLeft.config(bg="#36393F", fg="#FFFFFF", font=("Myriad", 100, "bold"))
 
 # Create a label to display the pressed key
 label = tk.Label(root, text="No Keybind Set")
@@ -115,7 +112,7 @@ label.pack(pady=10)
 label.config(bg="#36393F", fg="#FFFFFF", font=("Myriad", 13, "bold"))
 
 buttonKeybindLock = tk.Button(root, text="Unlock Keybind Setting", command=buttonKeybindLockClick)
-buttonKeybindLock.pack()
+buttonKeybindLock.pack(padx=70)
 buttonKeybindLock.config(font=("Myriad", 13, "bold"))
 
 buttonOnOff = tk.Button(root, text="Turn On", command=buttonOnOffClick)
